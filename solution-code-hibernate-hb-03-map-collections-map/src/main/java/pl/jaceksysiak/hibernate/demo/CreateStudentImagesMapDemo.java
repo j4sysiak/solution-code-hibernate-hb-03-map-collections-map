@@ -1,6 +1,6 @@
 package pl.jaceksysiak.hibernate.demo;
 
-import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -8,7 +8,7 @@ import org.hibernate.cfg.Configuration;
 
 import pl.jaceksysiak.hibernate.demo.entity.Student;
 
-public class CreateStudentImagesListDemo {
+public class CreateStudentImagesMapDemo {
 
 
 	public static void main(String[] args) {
@@ -26,16 +26,12 @@ public class CreateStudentImagesListDemo {
 		try {
 		//create the object
 			Student tempStudent = new Student("John","Doe","john@luv2code.com");
-			List<String> theImages = tempStudent.getImages();
+			Map<String, String> theImages = tempStudent.getImages();
 			
-			theImages.add("photo1.jpg");
-			theImages.add("photo2.jpg");
-			theImages.add("photo3.jpg");
-			theImages.add("photo4.jpg");
-			theImages.add("photo4.jpg"); //Duplicate, filtered at java level by HashSet!!!
-			theImages.add("photo5.jpg");
-			theImages.add("photo5.jpg"); //Duplicate, filtered at java level by HashSet!!!
-			
+			theImages.put("photo1.jpg", "Photo 1");
+			theImages.put("photo2.jpg", "Photo 2");
+			theImages.put("photo3.jpg", "Photo 3");
+
 		//start a transaction
 			session.beginTransaction();
 			
